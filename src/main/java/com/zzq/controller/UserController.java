@@ -21,10 +21,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @RequestMapping("/a")
-    public String getA(){
-        return "a";
-    }
 
     @RequestMapping("/toAddUser")
     public String toAddUser(){
@@ -35,10 +31,5 @@ public class UserController {
         userService.createUser(user);
         return "redirect:/user/getAllUser";
     }
-    /**
-     * 删除用户
-     * @param id
-     * @param request
-     * @param response
-     */
+
 }
