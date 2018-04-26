@@ -10,4 +10,5 @@ public interface UserService {
     void save(User user);
     void createUser(User user) throws UnsupportedEncodingException, NoSuchAlgorithmException;
 
+    User findUserByUserName(String username);
 }

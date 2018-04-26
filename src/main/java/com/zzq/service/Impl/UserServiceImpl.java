@@ -25,4 +25,10 @@ public class UserServiceImpl implements UserService {
         user.setPassword(MD5Utils.encrptyPassword(user.getPassword()));
         userMapper.insertSelective(user);
     }
+
+    @Override
+    public User findUserByUserName(String username) {
+        User user = userMapper.selectByUserName(username);
+        return null;
+    }
 }

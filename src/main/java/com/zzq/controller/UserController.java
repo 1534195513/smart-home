@@ -31,6 +31,19 @@ public class UserController {
         User user = (User)session.getAttribute("userinfo");
         return user;
     }
+    @RequestMapping("/index")
+    public String index(){
+        return "index";
+    }
 
+    @RequestMapping("/device")
+    public String device(){
+        return "device";
+    }
+
+    @RequestMapping("/addDevice")
+    public String addDev(){
+        return "addDevice";
+    }
 
 }

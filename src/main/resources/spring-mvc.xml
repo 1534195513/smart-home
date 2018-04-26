@@ -38,7 +38,13 @@
     <!--<mvc:resources mapping="/css/**" location="/css/" />-->
     <!--<mvc:resources mapping="/html/**" location="/html/" />-->
     <mvc:default-servlet-handler></mvc:default-servlet-handler>
-
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.apache.shiro.authz.UnauthenticatedException">403</prop>
+            </props>
+        </property>
+    </bean>
 
     <!-- 定义跳转的文件的前后缀 ，视图模式配置-->
     <bean id="viewResolver"
