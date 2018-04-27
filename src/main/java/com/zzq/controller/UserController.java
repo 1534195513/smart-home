@@ -1,6 +1,10 @@
 package com.zzq.controller;
 
+import com.zzq.model.Device;
+import com.zzq.model.Sensor;
 import com.zzq.model.User;
+import com.zzq.service.DeviceService;
+import com.zzq.service.SensorService;
 import com.zzq.service.UserService;
 import com.zzq.util.SocketServer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +29,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private DeviceService deviceService;
+
+    @Autowired
+    private SensorService sensorService;
+
     @RequestMapping("/userinfo")
     @ResponseBody
     public User getUser(HttpSession session){
@@ -36,11 +46,13 @@ public class UserController {
         return "index";
     }
 
-    @RequestMapping("/device")
-    public String device(){
+    @RequestMapping("/deviceList")
+    public String deviceList(HttpServletRequest servletRequest,Model model){
+        List<Device> devices =deviceService.allDevice();
+        model.addAttribute("deviceList",devices);
+        servletRequest.setAttribute("deviceList",devices);
         return "device";
     }
-
     @RequestMapping("/addDevice")
     public String addDev(){
         return "addDevice";
