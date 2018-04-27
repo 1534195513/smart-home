@@ -114,8 +114,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/user/device"><i class="fa fa-list"></i>设备列表</a></li>
-                        <li><a href="/reAttend"><i class="fa fa-plus"></i>添加设备</a></li>
+                        <li><a href="/user/deviceList"><i class="fa fa-list"></i>设备列表</a></li>
+                        <li><a href="/user/addDevice"><i class="fa fa-plus"></i>添加设备</a></li>
                         <li><a href="/reAttend/list"><i class="fa fa-hourglass-start"></i>定时器</a></li>
                     </ul>
                 </li>
@@ -131,8 +131,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/attend"><i class="fa fa-cogs"></i>传感器列表</a></li>
-                        <li><a href="/reAttend"><i class="fa fa-cogs"></i>添加传感器</a></li>
+                        <li><a href="/user/sensorList"><i class="fa fa-cogs"></i>传感器列表</a></li>
+                        <li><a href="/user/addSensor"><i class="fa fa-cogs"></i>添加传感器</a></li>
                         <li><a href="/reAttend/list"><i class="fa fa-cogs"></i>定时器</a></li>
                     </ul>
                 </li>

@@ -119,7 +119,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/user/sensorList"><i class="fa fa-cogs"></i>传感器列表</a></li>
-                        <li><a href="/u"><i class="fa fa-cogs"></i>添加传感器</a></li>
+                        <li><a href="/user/addSensor"><i class="fa fa-cogs"></i>添加传感器</a></li>
                         <li><a href="/reAttend/list"><i class="fa fa-cogs"></i>定时器</a></li>
                     </ul>
                 </li>

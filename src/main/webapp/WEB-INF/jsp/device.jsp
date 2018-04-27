@@ -114,8 +114,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/user/device"><i class="fa fa-list"></i>设备列表</a></li>
-                        <li><a href="/reAttend"><i class="fa fa-plus"></i>添加设备</a></li>
+                        <li><a href="/user/deviceList"><i class="fa fa-list"></i>设备列表</a></li>
+                        <li><a href="/user/addDevice"><i class="fa fa-plus"></i>添加设备</a></li>
                         <li><a href="/reAttend/list"><i class="fa fa-hourglass-start"></i>定时器</a></li>
                     </ul>
                 </li>
@@ -202,22 +202,23 @@
                                         <td><span class="text-muted">不在线</span></td>
                                         <td>${device.lastActive}</td>
                                         <td><a title="编辑" class="btn btn-default btn-xs"
-                                               href="/User/editDev.html?id=2656">
+                                               href="/User/editDevice?id=${device.id}">
                                             <i class="fa fa-pencil"></i>
                                         </a></td>
                                         <td><a title="对话" class="btn btn-default btn-xs"
-                                               href="/User/chatDev.html?id=2656"> <i
+                                               href="/User/chatDev.html?id=${device.id}"> <i
                                                 class="fa fa-comments"></i>
                                         </a> <a title="遥控" class="btn btn-default btn-xs"
-                                                href="/User/teleDev.html?id=2656"> <i
+                                                href="/User/teleDev.html?id=${device.id}"> <i
                                                 class="fa fa-th"></i>
                                         </a> <a title="图表" class="btn btn-default btn-xs"
-                                                href="/User/chartDev.html?id=2656">
+                                                href="/User/chartDev.html?id=${device.id}">
                                             <i class="fa fa-bar-chart-o"></i>
                                         </a></td>
                                     </tr>
                                 </c:forEach>
                             </c:if>
+                            <tr><a href="#">添加设备</a></tr>
                             </tbody>
                         </table>
                     </div>

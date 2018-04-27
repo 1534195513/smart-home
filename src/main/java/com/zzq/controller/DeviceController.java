@@ -23,4 +23,8 @@ public class DeviceController {
         servletRequest.setAttribute("deviceList",devices);
         return "device";
     }
+    @RequestMapping("/editDevice")
+    public String editDevice(){
+        return "editDevice";
+    }
 }
