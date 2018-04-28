@@ -18,7 +18,7 @@ public class DeviceController {
     @RequestMapping("/deviceList")
     public String deviceList(HttpServletRequest servletRequest, Model model)
     {
-        List<Device> devices = deviceService.allDevice();
+        List<Device> devices = deviceService.deviceList(1000);
         model.addAttribute("deviceList",devices);
         servletRequest.setAttribute("deviceList",devices);
         return "device";

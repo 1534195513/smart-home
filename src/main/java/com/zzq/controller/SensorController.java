@@ -16,13 +16,13 @@ public class SensorController {
     @Autowired
     private SensorService sensorService;
 
-    @RequestMapping("/sensorList")
-    public String sensorList(Model model, HttpServletRequest servletRequest){
-        List<Sensor> sensors =sensorService.allSensor();
-        model.addAttribute("sensorList",sensors);
-        servletRequest.setAttribute("sensorList",sensors);
-        return "sensor";
-    }
+//    @RequestMapping("/sensorList")
+//    public String sensorList(Model model, HttpServletRequest servletRequest){
+//        List<Sensor> sensors =sensorService.allSensor();
+//        model.addAttribute("sensorList",sensors);
+//        servletRequest.setAttribute("sensorList",sensors);
+//        return "sensor";
+//    }
 
     @RequestMapping("/addSensor")
     public String addSensor(){

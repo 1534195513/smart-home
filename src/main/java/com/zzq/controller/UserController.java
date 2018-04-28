@@ -48,10 +48,17 @@ public class UserController {
 
     @RequestMapping("/deviceList")
     public String deviceList(HttpServletRequest servletRequest,Model model){
-        List<Device> devices =deviceService.allDevice();
+        List<Device> devices =deviceService.deviceList(1000);
         model.addAttribute("deviceList",devices);
         servletRequest.setAttribute("deviceList",devices);
         return "device";
+    }
+    @RequestMapping("/sensorList")
+    public String SensorList(HttpServletRequest servletRequest,Model model){
+        List<Sensor> sensors =sensorService.sensorList(3);
+        model.addAttribute("sensorList",sensors);
+        servletRequest.setAttribute("sensorList",sensors);
+        return "sensor";
     }
     @RequestMapping("/addDevice")
     public String addDev(){

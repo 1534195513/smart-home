@@ -19,6 +19,16 @@ public class Device {
 
     private Byte status;
 
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -90,4 +100,6 @@ public class Device {
     public void setStatus(Byte status) {
         this.status = status;
     }
+
+
 }

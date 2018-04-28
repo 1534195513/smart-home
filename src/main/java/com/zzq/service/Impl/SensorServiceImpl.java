@@ -16,4 +16,9 @@ public class SensorServiceImpl implements SensorService {
         List<Sensor> sensors =sensorMapper.allSensors();
         return sensors;
     }
+    @Override
+    public List<Sensor> sensorList(int id){
+        List<Sensor> sensors = sensorMapper.selectByDeviceId(id);
+        return sensors;
+    }
 }

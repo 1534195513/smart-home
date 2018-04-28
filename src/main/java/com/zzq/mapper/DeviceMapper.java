@@ -1,6 +1,7 @@
 package com.zzq.mapper;
 
 import com.zzq.model.Device;
+import com.zzq.model.User;
 
 import java.util.List;
 

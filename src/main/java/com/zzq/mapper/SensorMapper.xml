@@ -13,7 +13,7 @@
     <result column="status" property="status" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, tags, type, about, device_id, last_update, last_data, status
+    s.id, s.name, s.tags, s.type, s.about, device_id, s.last_update, s.last_data, s.status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -25,6 +25,13 @@
     select
     <include refid="Base_Column_List" />
     from sensor
+  </select>
+  <select id="selectByDeviceId" resultType="com.zzq.model.Sensor">
+    select
+    <include refid="Base_Column_List"/>
+    from sensor s
+    join device d on s.device_id = d.id
+    where s.device_id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sensor

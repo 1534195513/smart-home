@@ -2,6 +2,7 @@ package com.zzq.service.Impl;
 
 import com.zzq.mapper.DeviceMapper;
 import com.zzq.model.Device;
+import com.zzq.model.User;
 import com.zzq.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
