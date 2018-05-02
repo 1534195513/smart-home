@@ -25,4 +25,9 @@ public class DeviceServiceImpl implements DeviceService {
         List<Device> devices = deviceMapper.allDevice();
         return devices;
     }
+
+    @Override
+    public Device selectByDeviceId(int id) {
+        return deviceMapper.selectByDeviceId(id);
+    }
 }

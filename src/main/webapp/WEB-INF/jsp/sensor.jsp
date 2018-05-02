@@ -94,11 +94,10 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="" class="img-circle user_head_img" alt="User Image">
+                    <img src="/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p class="user_name"></p>
-                    <!-- Status -->
+                    <p>Alexander Pierce</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -132,7 +131,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/user/sensorList"><i class="fa fa-cogs"></i>传感器列表</a></li>
-                        <li><a href="/user/addSensor"><i class="fa fa-cogs"></i>添加传感器</a></li>
+                        <li><a href="/user/addSensor"><i class="fa fa-plus"></i>添加传感器</a></li>
                         <li><a href="/reAttend/list"><i class="fa fa-cogs"></i>定时器</a></li>
                     </ul>
                 </li>
@@ -195,10 +194,10 @@
                             <c:if test="${!empty deviceList}">
                                 <c:forEach items="${deviceList}" var="device">
                                     <tr>
-                                        <td>${device.id}</td>
-                                        <td>${device.name}</td>
-                                        <td>${device.tags}</td>
-                                        <td>${device.locate}</td>
+                                        <%--<td>${device.id}</td>--%>
+                                        <%--<td>${device.name}</td>--%>
+                                        <%--<td>${device.tags}</td>--%>
+                                        <%--<td>${device.locate}</td>--%>
                                         <td><span class="text-muted">不在线</span></td>
                                         <td>${device.lastActive}</td>
                                         <td><a title="编辑" class="btn btn-default btn-xs"
@@ -252,10 +251,10 @@
                                     <tr>
                                         <td>${sensor.id}</td>
                                         <td>${sensor.name}</td>
-                                        <td>${sensor.deviceId}</td>
-                                        <td>${sensor.type}</td>
-                                        <td>${sensor.lastUpdate}</td>
+                                        <td>${sensor.about}</td>
+                                        <td>${sensor.status}</td>
                                         <td>${sensor.lastData}</td>
+                                        <td>${sensor.lastUpdate}</td>
                                         <td>
                                             <a class="btn btn-default btn-xs" href="/User/editInput?id=4588">
                                                 <i class="fa fa-pencil"></i>
@@ -269,6 +268,7 @@
                                     </tr>
                                 </c:forEach>
                             </c:if>
+                            <tr><a href="/user/addSensor"> 添加传感器</a></tr>
                             </tbody>
                         </table>
                     </div>
@@ -278,8 +278,6 @@
         <!-- Main content -->
         <section class="content">
             <!-- Your Page Content Here -->
-            <!-- LINE CHART -->
-            <div id="container" style="min-width:400px;height:400px"></div>
 
         </section>
         <!-- /.content -->

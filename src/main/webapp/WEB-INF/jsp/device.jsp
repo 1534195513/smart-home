@@ -68,18 +68,9 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="" class="user-image user_head_img" alt="User Image">
+                            <img src="/static/dist/img/user2-160x160.jpg" class="user-image user_head_img" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs user_name"></span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-right">
-                                    <a href="/login" class="btn btn-default btn-flat">退出系统</a>
-                                </div>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </div>
@@ -94,11 +85,10 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="" class="img-circle user_head_img" alt="User Image">
+                    <img src="/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p class="user_name"></p>
-                    <!-- Status -->
+                    <p>Alexander Pierce</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -132,7 +122,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/user/sensorList"><i class="fa fa-cogs"></i>传感器列表</a></li>
-                        <li><a href="/user/addSensor"><i class="fa fa-cogs"></i>添加传感器</a></li>
+                        <li><a href="/user/addSensor"><i class="fa fa-plus"></i>添加传感器</a></li>
                         <li><a href="/"><i class="fa fa-cogs"></i>定时器</a></li>
                     </ul>
                 </li>
@@ -202,7 +192,7 @@
                                         <td><span class="text-muted">不在线</span></td>
                                         <td>${device.lastActive}</td>
                                         <td><a title="编辑" class="btn btn-default btn-xs"
-                                               href="/User/editDevice?id=${device.id}">
+                                               href="/user/editDevice?id=${device.id}">
                                             <i class="fa fa-pencil"></i>
                                         </a></td>
                                         <td><a title="对话" class="btn btn-default btn-xs"
@@ -219,57 +209,6 @@
                                 </c:forEach>
                             </c:if>
                             <tr><a href="#">添加设备</a></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <!--/. row-->
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <section class="panel">
-                    <header class="panel-heading">
-                        数据接口
-                        <small><a title="接口属于智能设备的一个功能，用于数据上传，在线实时监控" href="#"><i class="fa fa-question"></i></a>
-                        </small>
-                    </header>
-                    <div class="table-responsive panel-body">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>名称</th>
-                                <th>所属设备id</th>
-                                <th>接口类型</th>
-                                <th>更新时间</th>
-                                <th>编辑</th>
-                                <th>数据查看</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:if test="${!empty sensorList}">
-                                <c:forEach items="${sensorList}" var="sensor">
-                                    <tr>
-                                        <td>${sensor.id}</td>
-                                        <td>${sensor.name}</td>
-                                        <td>${sensor.deviceId}</td>
-                                        <td>${sensor.type}</td>
-                                        <td>${sensor.lastUpdate}</td>
-                                        <td>${sensor.lastData}</td>
-                                        <td>
-                                            <a class="btn btn-default btn-xs" href="/User/editInput?id=4588">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-default btn-xs" href="/User/chartInput?id=4588">
-                                                <i class="fa fa-bar-chart-o"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                            </c:if>
                             </tbody>
                         </table>
                     </div>

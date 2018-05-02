@@ -93,6 +93,16 @@
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
                 <!-- Optionally, you can add icons to the links -->
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>Alexander Pierce</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                </div>
 
                 <li class="treeview">
                     <a href="#"><i class="fa  fa-television"></i> <span>我的设备</span>
@@ -119,7 +129,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="/user/sensorList"><i class="fa fa-cogs"></i>传感器列表</a></li>
-                        <li><a href="/user/addSensor"><i class="fa fa-cogs"></i>添加传感器</a></li>
+                        <li><a href="/user/addSensor"><i class="fa fa-plus"></i>添加传感器</a></li>
                         <li><a href="/reAttend/list"><i class="fa fa-cogs"></i>定时器</a></li>
                     </ul>
                 </li>

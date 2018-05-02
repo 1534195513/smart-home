@@ -21,5 +21,7 @@ public interface DeviceMapper {
 
     List<Device> selectByUserId(int id);
 
+    Device selectByDeviceId(int id);
+
     List<Device> allDevice();
 }

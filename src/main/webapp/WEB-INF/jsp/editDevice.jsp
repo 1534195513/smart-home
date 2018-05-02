@@ -1,16 +1,35 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Hasee
-  Date: 2018/4/27
-  Time: 23:59
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>Title</title>
-</head>
-<body>
+    <base href="<%=basePath%>">
 
+    <title>编辑设备</title>
+
+    <script type="text/javascript">
+        function updateUser(){
+            var form = document.forms[0];
+            form.action = "<%=basePath%>user/updateUser";
+            form.method="post";
+            form.submit();
+        }
+    </script>
+
+</head>
+
+<body>
+<h1>添加用户</h1>
+<form action="" name="userForm">
+    <input type="hidden" name="id" value="${device.id }"/>
+    姓名：<input type="text" name="设备名称" value="${device.name}"/>
+    年龄：<input type="text" name="位置" value="${device.locate }"/>
+    <input type="button" value="编辑" onclick="updateUser()"/>
+</form>
 </body>
+
 </html>

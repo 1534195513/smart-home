@@ -53,6 +53,14 @@ public class UserController {
         servletRequest.setAttribute("deviceList",devices);
         return "device";
     }
+
+    @RequestMapping("/editDevice")
+    public String editDevice(HttpServletRequest request,Model model,int id){
+        model.addAttribute("device",deviceService.selectByDeviceId(id));
+       request.setAttribute("device",deviceService.selectByDeviceId(id));
+        return "editDevice";
+    }
+
     @RequestMapping("/sensorList")
     public String SensorList(HttpServletRequest servletRequest,Model model){
         List<Sensor> sensors =sensorService.sensorList(3);

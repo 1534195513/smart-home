@@ -32,6 +32,12 @@
     from device d join user u on d.user_id = u.id
     where d.user_id = #{id}
   </select>
+  <select id="selectByDeviceId" resultType="com.zzq.model.Device" parameterType="integer">
+    select
+    <include refid="Base_Column_List" />
+    from device d
+    where d.id = #{id}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from device
     where id = #{id,jdbcType=INTEGER}

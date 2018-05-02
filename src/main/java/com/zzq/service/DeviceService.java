@@ -8,4 +8,5 @@ public interface DeviceService {
 
     List<Device> deviceList(int id);
     List<Device> allDevice();
+    Device selectByDeviceId(int id);
 }
