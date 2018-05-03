@@ -24,7 +24,7 @@ public class DeviceController {
         return "device";
     }
     @RequestMapping("/editDevice")
-    public String editDevice(){
+    public String editDevice(Device device){
         return "editDevice";
     }
 }

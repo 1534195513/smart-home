@@ -24,13 +24,4 @@ public class SensorController {
 //        return "sensor";
 //    }
 
-    @RequestMapping("/addSensor")
-    public String addSensor(){
-        return "addSensor";
-    }
-
-    @RequestMapping("/editSensor")
-    public String editSensor(){
-        return "editSensor";
-    }
 }

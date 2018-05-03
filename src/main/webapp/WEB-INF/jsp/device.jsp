@@ -208,7 +208,7 @@
                                     </tr>
                                 </c:forEach>
                             </c:if>
-                            <tr><a href="#">添加设备</a></tr>
+                            <tr><a href="/user/toAddDevice">添加设备</a></tr>
                             </tbody>
                         </table>
                     </div>

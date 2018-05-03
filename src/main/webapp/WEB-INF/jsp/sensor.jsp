@@ -268,7 +268,7 @@
                                     </tr>
                                 </c:forEach>
                             </c:if>
-                            <tr><a href="/user/addSensor"> 添加传感器</a></tr>
+                            <tr><a href="/user/toAddSensor"> 添加传感器</a></tr>
                             </tbody>
                         </table>
                     </div>

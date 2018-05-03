@@ -26,9 +26,12 @@
 <h1>添加用户</h1>
 <form action="" name="userForm">
     <input type="hidden" name="id" value="${device.id }"/>
-    姓名：<input type="text" name="设备名称" value="${device.name}"/>
-    年龄：<input type="text" name="位置" value="${device.locate }"/>
+    设备名称：<input type="text" name="设备名称" value="${device.name}"/>
+    标签：<input type="text" name="标签" value="${device.tags }"/>
+    位置：<input type="text" name="位置" value="${device.locate}"/>
+    说明：<input type="text" name="说明" value="${device.about }"/>
     <input type="button" value="编辑" onclick="updateUser()"/>
+    <a href="/user/deviceList"><input type="button" value="返回"></a>
 </form>
 </body>
 

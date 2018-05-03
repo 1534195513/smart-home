@@ -9,4 +9,6 @@ public interface SensorService {
     List<Sensor> allSensor();
 
     List<Sensor> sensorList(int id);
+
+    void saveSensor(Sensor sensor);
 }

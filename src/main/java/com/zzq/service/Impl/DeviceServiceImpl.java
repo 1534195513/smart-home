@@ -30,4 +30,11 @@ public class DeviceServiceImpl implements DeviceService {
     public Device selectByDeviceId(int id) {
         return deviceMapper.selectByDeviceId(id);
     }
+
+    @Override
+    public void saveDevice(Device device) {
+        deviceMapper.insert(device);
+    }
+
+
 }

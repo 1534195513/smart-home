@@ -68,9 +68,26 @@ public class UserController {
         servletRequest.setAttribute("sensorList",sensors);
         return "sensor";
     }
-    @RequestMapping("/addDevice")
-    public String addDev(){
+
+    @RequestMapping("/toAddDevice")
+    public String toAddDev(){
         return "addDevice";
     }
 
+    @RequestMapping("/addDevice")
+    public String addDev(Device device){
+        deviceService.saveDevice(device);
+        return "redirect:deviceList";
+    }
+
+    @RequestMapping("/toAddSensor")
+    public String toAddSensor(){
+        return "addSensor";
+    }
+
+    @RequestMapping("/addSensor")
+    public String addSensor(Sensor sensor) {
+        sensorService.saveSensor(sensor);
+        return "redirect:sensorList";
+    }
 }
