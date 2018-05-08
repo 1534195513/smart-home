@@ -14,7 +14,7 @@
     <script type="text/javascript">
         function updateUser(){
             var form = document.forms[0];
-            form.action = "<%=basePath%>user/updateUser";
+            form.action = "<%=basePath%>user/updateDevice";
             form.method="post";
             form.submit();
         }
@@ -23,7 +23,7 @@
 </head>
 
 <body>
-<h1>添加用户</h1>
+<h1>编辑设备</h1>
 <form action="" name="userForm">
     <input type="hidden" name="id" value="${device.id }"/>
     设备名称：<input type="text" name="设备名称" value="${device.name}"/>

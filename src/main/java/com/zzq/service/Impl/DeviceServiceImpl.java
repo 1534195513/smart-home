@@ -27,6 +27,11 @@ public class DeviceServiceImpl implements DeviceService {
     }
 
     @Override
+    public boolean updateDevice(Device device) {
+        return deviceMapper.updateDevice(device);
+    }
+
+    @Override
     public Device selectByDeviceId(int id) {
         return deviceMapper.selectByDeviceId(id);
     }

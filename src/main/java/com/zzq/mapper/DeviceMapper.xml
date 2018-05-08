@@ -26,7 +26,7 @@
     <include refid="Base_Column_List" />
     from device
   </select>
-  <select id="selectByUserId" resultType="com.zzq.model.Device" parameterType="integer">
+  <select id="selectByUserId"  resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from device d join user u on d.user_id = u.id
@@ -141,6 +141,24 @@
         status = #{status,jdbcType=TINYINT},
       </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateDevice" parameterType="com.zzq.model.Device" >
+    update device
+  set
+
+        name = #{name,jdbcType=VARCHAR},
+
+
+        tags = #{tags,jdbcType=VARCHAR},
+
+
+        locate = #{locate,jdbcType=VARCHAR},
+
+
+        about = #{about,jdbcType=VARCHAR}
+
+
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.zzq.model.Device" >

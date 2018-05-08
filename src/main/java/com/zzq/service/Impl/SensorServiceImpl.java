@@ -23,7 +23,19 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    public boolean update(Sensor sensor) {
+
+       return sensorMapper.update(sensor);
+    }
+
+    @Override
     public void saveSensor(Sensor sensor) {
         sensorMapper.insert(sensor);
     }
+
+    @Override
+    public Sensor selectByPrimaryKey(int id) {
+        return sensorMapper.selectByPrimaryKey(id);
+    }
+
 }

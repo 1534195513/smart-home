@@ -17,6 +17,9 @@ public interface SensorMapper {
 
     int updateByPrimaryKey(Sensor record);
 
+    boolean update(Sensor sensor);
+
     List<Sensor> allSensors();
+
     List<Sensor> selectByDeviceId(int id);
 }

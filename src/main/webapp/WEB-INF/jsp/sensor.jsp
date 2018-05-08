@@ -240,6 +240,7 @@
                                 <th>名称</th>
                                 <th>所属设备id</th>
                                 <th>接口类型</th>
+                                <th>状态</th>
                                 <th>更新时间</th>
                                 <th>编辑</th>
                                 <th>数据查看</th>
@@ -251,17 +252,17 @@
                                     <tr>
                                         <td>${sensor.id}</td>
                                         <td>${sensor.name}</td>
-                                        <td>${sensor.about}</td>
+                                        <td>${sensor.deviceId}</td>
                                         <td>${sensor.status}</td>
                                         <td>${sensor.lastData}</td>
                                         <td>${sensor.lastUpdate}</td>
                                         <td>
-                                            <a class="btn btn-default btn-xs" href="/User/editInput?id=4588">
+                                            <a class="btn btn-default btn-xs" href="/user/editSensor?id=${sensor.id}">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-default btn-xs" href="/User/chartInput?id=4588">
+                                            <a class="btn btn-default btn-xs" href="/user/toAddSensor?id=${sensor.id}">
                                                 <i class="fa fa-bar-chart-o"></i>
                                             </a>
                                         </td>

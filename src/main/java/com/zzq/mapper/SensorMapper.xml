@@ -13,20 +13,20 @@
     <result column="status" property="status" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    s.id, s.name, s.tags, s.type, s.about, device_id, s.last_update, s.last_data, s.status
+    s.id, s.name, s.tags, s.type, s.about, s.device_id, s.last_update, s.last_data, s.status
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from sensor
-    where id = #{id,jdbcType=INTEGER}
+    from sensor s
+    where s.id = #{id,jdbcType=INTEGER}
   </select>
   <select id="allSensors" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select
     <include refid="Base_Column_List" />
-    from sensor
+    from sensor s
   </select>
-  <select id="selectByDeviceId" resultType="com.zzq.model.Sensor">
+  <select id="selectByDeviceId"  resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from sensor s
@@ -114,6 +114,33 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="tags != null" >
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="about != null" >
+        about = #{about,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        device_id = #{deviceId,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdate != null" >
+        last_update = #{lastUpdate,jdbcType=INTEGER},
+      </if>
+      <if test="lastData != null" >
+        last_data = #{lastData,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="com.zzq.model.Sensor" >
+    update sensor
+    <set>
       <if test="tags != null" >
         tags = #{tags,jdbcType=VARCHAR},
       </if>

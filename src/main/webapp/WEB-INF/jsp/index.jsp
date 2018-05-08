@@ -96,7 +96,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="/static/image/cat.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>Alexander Pierce</p>
@@ -120,7 +120,6 @@
             <!-- /.sidebar-menu -->
             <ul class="sidebar-menu">
                 <!-- Optionally, you can add icons to the links -->
-
                 <li class="treeview">
                     <a href="#"><i class="fa fa-fw fa-cog"></i> <span>我的传感器</span>
                         <span class="pull-right-container">

@@ -1,7 +1,6 @@
 package com.zzq.mapper;
 
 import com.zzq.model.Device;
-import com.zzq.model.User;
 
 import java.util.List;
 
@@ -24,4 +23,6 @@ public interface DeviceMapper {
     Device selectByDeviceId(int id);
 
     List<Device> allDevice();
+
+    boolean updateDevice(Device device);
 }

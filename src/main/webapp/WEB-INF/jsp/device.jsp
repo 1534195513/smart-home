@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +68,8 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="/static/dist/img/user2-160x160.jpg" class="user-image user_head_img" alt="User Image">
+                            <img src="/static/dist/img/user2-160x160.jpg" class="user-image user_head_img"
+                                 alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         </a>
                     </li>
@@ -178,7 +179,9 @@
                                 <th>在线状态</th>
                                 <th>在线时间</th>
                                 <th>编辑</th>
-                                <th>控制模式</th>
+                                <th>对话</th>
+                                <th>传感器</th>
+                                <th>图表</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -189,22 +192,28 @@
                                         <td>${device.name}</td>
                                         <td>${device.tags}</td>
                                         <td>${device.locate}</td>
-                                        <td><span class="text-muted">不在线</span></td>
-                                        <td>${device.lastActive}</td>
+                                        <td>${device.status}</td>
+                                        <td> ${device.lastActive}</td>
                                         <td><a title="编辑" class="btn btn-default btn-xs"
                                                href="/user/editDevice?id=${device.id}">
                                             <i class="fa fa-pencil"></i>
-                                        </a></td>
+                                        </a>
+                                        </td>
                                         <td><a title="对话" class="btn btn-default btn-xs"
-                                               href="/User/chatDev.html?id=${device.id}"> <i
+                                               href="/user/chatDev.html?id=${device.id}"> <i
                                                 class="fa fa-comments"></i>
-                                        </a> <a title="遥控" class="btn btn-default btn-xs"
-                                                href="/User/teleDev.html?id=${device.id}"> <i
+                                        </a>
+                                        </td>
+                                        <td><a title="传感器" class="btn btn-default btn-xs"
+                                               href="/user/sensorList?id=${device.id}"> <i
                                                 class="fa fa-th"></i>
-                                        </a> <a title="图表" class="btn btn-default btn-xs"
-                                                href="/User/chartDev.html?id=${device.id}">
+                                        </a>
+                                        </td>
+                                        <td><a title="图表" class="btn btn-default btn-xs"
+                                               href="/User/chartDev.html?id=${device.id}">
                                             <i class="fa fa-bar-chart-o"></i>
-                                        </a></td>
+                                        </a>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </c:if>

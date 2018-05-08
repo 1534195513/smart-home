@@ -10,5 +10,8 @@ public interface SensorService {
 
     List<Sensor> sensorList(int id);
 
+    boolean update(Sensor sensor);
+
     void saveSensor(Sensor sensor);
+    Sensor selectByPrimaryKey(int id);
 }

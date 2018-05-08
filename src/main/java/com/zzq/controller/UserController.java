@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -37,51 +38,59 @@ public class UserController {
 
     @RequestMapping("/userinfo")
     @ResponseBody
-    public User getUser(HttpSession session){
-        User user = (User)session.getAttribute("userinfo");
+    public User getUser(HttpSession session) {
+        User user = (User) session.getAttribute("userinfo");
         return user;
     }
+
     @RequestMapping("/index")
-    public String index(){
+    public String index() {
         return "index";
     }
 
     @RequestMapping("/deviceList")
-    public String deviceList(HttpServletRequest servletRequest,Model model){
-        List<Device> devices =deviceService.deviceList(1000);
-        model.addAttribute("deviceList",devices);
-        servletRequest.setAttribute("deviceList",devices);
+    public String deviceList(HttpServletRequest servletRequest, Model model) {
+        List<Device> devices = deviceService.deviceList(1000);
+        model.addAttribute("deviceList", devices);
+        servletRequest.setAttribute("deviceList", devices);
         return "device";
     }
 
-    @RequestMapping("/editDevice")
-    public String editDevice(HttpServletRequest request,Model model,int id){
-        model.addAttribute("device",deviceService.selectByDeviceId(id));
-       request.setAttribute("device",deviceService.selectByDeviceId(id));
-        return "editDevice";
-    }
-
-    @RequestMapping("/sensorList")
-    public String SensorList(HttpServletRequest servletRequest,Model model){
-        List<Sensor> sensors =sensorService.sensorList(3);
-        model.addAttribute("sensorList",sensors);
-        servletRequest.setAttribute("sensorList",sensors);
-        return "sensor";
-    }
-
     @RequestMapping("/toAddDevice")
-    public String toAddDev(){
+    public String toAddDev() {
         return "addDevice";
     }
 
     @RequestMapping("/addDevice")
-    public String addDev(Device device){
+    public String addDev(Device device) {
         deviceService.saveDevice(device);
         return "redirect:deviceList";
     }
 
+    @RequestMapping("/editDevice")
+    public String editDevice(HttpServletRequest request, Model model, int id) {
+        model.addAttribute("device", deviceService.selectByDeviceId(id));
+        request.setAttribute("device", deviceService.selectByDeviceId(id));
+        return "editDevice";
+    }
+
+    @RequestMapping("/updateDevice")
+    public String updateDevice(Device device) {
+        deviceService.updateDevice(device);
+
+        return "redirect:/deviceList";
+    }
+
+    @RequestMapping("/sensorList")
+    public String SensorList(HttpServletRequest servletRequest, Model model,int id) {
+        List<Sensor> sensors = sensorService.sensorList(id);
+        model.addAttribute("sensorList", sensors);
+        servletRequest.setAttribute("sensorList", sensors);
+        return "sensor";
+    }
+
     @RequestMapping("/toAddSensor")
-    public String toAddSensor(){
+    public String toAddSensor() {
         return "addSensor";
     }
 
@@ -89,5 +98,23 @@ public class UserController {
     public String addSensor(Sensor sensor) {
         sensorService.saveSensor(sensor);
         return "redirect:sensorList";
+    }
+
+    @RequestMapping("/editSensor")
+    public String editSensor(HttpServletRequest request, Model model, int id) {
+        model.addAttribute("sensor", sensorService.selectByPrimaryKey(id));
+        request.setAttribute("sensor", sensorService.selectByPrimaryKey(id));
+        return "editSensor";
+    }
+
+    @RequestMapping("/updateSensor")
+    public String updateSensor(Sensor sensor, HttpServletRequest request, Model model) {
+        if(sensorService.update(sensor)) {
+            request.setAttribute("sensor", sensor);
+            model.addAttribute("sensor", sensor);
+            return "redirect:sensorList";
+        }else{
+            return "/error";
+        }
     }
 }
