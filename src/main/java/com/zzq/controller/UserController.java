@@ -1,12 +1,13 @@
 package com.zzq.controller;
 
-import com.zzq.model.Device;
-import com.zzq.model.Sensor;
 import com.zzq.model.User;
 import com.zzq.service.DeviceService;
 import com.zzq.service.SensorService;
-import com.zzq.service.UserService;
-import com.zzq.util.SocketServer;
+import com.zzq.util.AccessToken;
+import com.zzq.util.AccessTokenUtil;
+import com.zzq.util.ShellIOT;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,27 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private DeviceService deviceService;
-
-    @Autowired
-    private SensorService sensorService;
+    private AccessToken accessToken = AccessTokenUtil.getAccessToken();
 
     @RequestMapping("/userinfo")
     @ResponseBody
@@ -48,73 +35,45 @@ public class UserController {
         return "index";
     }
 
-    @RequestMapping("/deviceList")
-    public String deviceList(HttpServletRequest servletRequest, Model model) {
-        List<Device> devices = deviceService.deviceList(1000);
-        model.addAttribute("deviceList", devices);
-        servletRequest.setAttribute("deviceList", devices);
-        return "device";
+    @RequestMapping("/dev")
+    @ResponseBody
+    public String dev() {
+
+        String dev = "https://www.bigiot.net/oauth/dev?access_token=" + accessToken.getAccess_token() + "&id=2656";
+        String device = ShellIOT.getConnection(dev);
+        return device;
     }
 
-    @RequestMapping("/toAddDevice")
-    public String toAddDev() {
-        return "addDevice";
+    @RequestMapping("/sen")
+    @ResponseBody
+    public String sen() {
+        String sen = "https://www.bigiot.net/oauth/myinputs?access_token=" + accessToken.getAccess_token();
+        String sensor = ShellIOT.getConnection(sen);
+        return sensor;
+    }
+    @RequestMapping("/chatDev")
+    public String chatDev(){
+        return chatDev();
     }
 
-    @RequestMapping("/addDevice")
-    public String addDev(Device device) {
-        deviceService.saveDevice(device);
-        return "redirect:deviceList";
+    @RequestMapping("/historyData")
+    @ResponseBody
+    public String data(int id, HttpServletRequest servletRequest, Model model) {
+        String history = "https://www.bigiot.net/oauth/historydata?access_token=" + accessToken.getAccess_token() + "&id=" + id;
+        String historyData = ShellIOT.getConnection(history);
+        servletRequest.setAttribute("data", historyData);
+        model.addAttribute("data", historyData);
+        return historyData;
     }
-
-    @RequestMapping("/editDevice")
-    public String editDevice(HttpServletRequest request, Model model, int id) {
-        model.addAttribute("device", deviceService.selectByDeviceId(id));
-        request.setAttribute("device", deviceService.selectByDeviceId(id));
-        return "editDevice";
+    @RequestMapping("/timer")
+    public String timer(){
+        return "timer";
     }
-
-    @RequestMapping("/updateDevice")
-    public String updateDevice(Device device) {
-        deviceService.updateDevice(device);
-
-        return "redirect:/deviceList";
-    }
-
-    @RequestMapping("/sensorList")
-    public String SensorList(HttpServletRequest servletRequest, Model model,int id) {
-        List<Sensor> sensors = sensorService.sensorList(id);
-        model.addAttribute("sensorList", sensors);
-        servletRequest.setAttribute("sensorList", sensors);
-        return "sensor";
-    }
-
-    @RequestMapping("/toAddSensor")
-    public String toAddSensor() {
-        return "addSensor";
-    }
-
-    @RequestMapping("/addSensor")
-    public String addSensor(Sensor sensor) {
-        sensorService.saveSensor(sensor);
-        return "redirect:sensorList";
-    }
-
-    @RequestMapping("/editSensor")
-    public String editSensor(HttpServletRequest request, Model model, int id) {
-        model.addAttribute("sensor", sensorService.selectByPrimaryKey(id));
-        request.setAttribute("sensor", sensorService.selectByPrimaryKey(id));
-        return "editSensor";
-    }
-
-    @RequestMapping("/updateSensor")
-    public String updateSensor(Sensor sensor, HttpServletRequest request, Model model) {
-        if(sensorService.update(sensor)) {
-            request.setAttribute("sensor", sensor);
-            model.addAttribute("sensor", sensor);
-            return "redirect:sensorList";
-        }else{
-            return "/error";
-        }
-    }
+//    @RequestMapping("/timer")
+//    @ResponseBody
+//    public String timer(int id){
+//        String timer = "https://www.bigiot.net/oauth/timer?access_token="+accessToken.getAccess_token()+"&id="+id;
+//        String timerTarget = ShellIOT.getConnection(timer);
+//        return timerTarget;
+//    }
 }

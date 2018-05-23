@@ -34,6 +34,7 @@
 <form action="" name="userForm">
     设备名字：<input type="text" name="name">
     标签：<input type="text" name="tag">
+    位置：<input type="text" name="locate">
     说明：<input type="text" name="about">
     <input type="button" value="添加" onclick="addDevice()">
 </form>

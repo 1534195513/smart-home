@@ -24,7 +24,7 @@
   <select id="allDevice" resultMap="BaseResultMap"  >
     select
     <include refid="Base_Column_List" />
-    from device
+    from device d
   </select>
   <select id="selectByUserId"  resultMap="BaseResultMap">
     select
@@ -43,11 +43,11 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zzq.model.Device" >
-    insert into device (id, name, tags, 
+    insert into device ( name, tags,
       locate, about, user_id, 
       create_time, last_active, status
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, 
+    values (#{name,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR},
       #{locate,jdbcType=VARCHAR}, #{about,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{createTime,jdbcType=INTEGER}, #{lastActive,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}
       )

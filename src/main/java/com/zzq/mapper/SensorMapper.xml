@@ -26,6 +26,10 @@
     <include refid="Base_Column_List" />
     from sensor s
   </select>
+  <select id="findHistoryData" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+   select * from sensor s
+join datapoint d on s.id = d.sensor_id where s.id=#{id}
+  </select>
   <select id="selectByDeviceId"  resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>

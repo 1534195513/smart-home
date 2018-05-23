@@ -12,10 +12,10 @@
     <base href="<%=basePath%>">
     <title>首页</title>
 </head>
+
 <body>
-<h5>
-    <a href="<%=basePath%>user/getAllUser">进入用户管理页</a>
-    <a href="<%=basePath%>user/a">进入</a>
+<h5 align="center">
+    <a href="<%=basePath%>user/index" style="align-content: center">进入小家居</a>
 </h5>
 </body>
 </html>

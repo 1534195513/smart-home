@@ -25,7 +25,6 @@ public class loginController {
     public String login(){
         return "login";
     }
-
     @RequestMapping("/check")
     @ResponseBody
     public String checkLogin(HttpServletRequest request){
@@ -47,13 +46,5 @@ public class loginController {
         userService.createUser(user);
         return "success";
     }
-//    @RequestMapping("/send")
-//    @ResponseBody
-//    public String send(){
-//        //{"M":"update","ID":"2656","V":{"4588":"29"}}
-////        SocketServer socketServer = new SocketServer();
-//String send ="{\"V\":48}";
-//
-//  return send;
 
 }

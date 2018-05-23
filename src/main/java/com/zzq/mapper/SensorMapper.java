@@ -22,4 +22,6 @@ public interface SensorMapper {
     List<Sensor> allSensors();
 
     List<Sensor> selectByDeviceId(int id);
+
+    List<Sensor> findHistoryData(int id);
 }

@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="/static/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/static/dist/css/AdminLTE.min.css">
+
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-switch.min.css">
+
     <link rel="stylesheet" href="/static/dist/css/skins/skin-blue.min.css">
 
 
@@ -167,62 +170,6 @@
         <%--</h1>--%>
         <%--</section>--%>
         <%--设备--%>
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <section class="panel">
-                    <header class="panel-heading">
-                        智能设备
-                        <small><a
-                                title="具有网络连接功能的设备，如：Arduino W5100、ESP8266、Openwrt路由器、树莓派等，添加设备后可将设备与贝壳物联平台进行对接，进行远程控制和监控数据"
-                                href="#"><i class="fa fa-question"></i></a></small>
-                    </header>
-                    <div class="table-responsive panel-body">
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>名称</th>
-                                <th>APIKEY</th>
-                                <th>位置</th>
-                                <th>在线状态</th>
-                                <th>在线时间</th>
-                                <th>编辑</th>
-                                <th>控制模式</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:if test="${!empty deviceList}">
-                                <c:forEach items="${deviceList}" var="device">
-                                    <tr>
-                                        <%--<td>${device.id}</td>--%>
-                                        <%--<td>${device.name}</td>--%>
-                                        <%--<td>${device.tags}</td>--%>
-                                        <%--<td>${device.locate}</td>--%>
-                                        <td><span class="text-muted">不在线</span></td>
-                                        <td>${device.lastActive}</td>
-                                        <td><a title="编辑" class="btn btn-default btn-xs"
-                                               href="/User/editDev.html?id=2656">
-                                            <i class="fa fa-pencil"></i>
-                                        </a></td>
-                                        <td><a title="对话" class="btn btn-default btn-xs"
-                                               href="/User/chatDev.html?id=2656"> <i
-                                                class="fa fa-comments"></i>
-                                        </a> <a title="遥控" class="btn btn-default btn-xs"
-                                                href="/User/teleDev.html?id=2656"> <i
-                                                class="fa fa-th"></i>
-                                        </a> <a title="图表" class="btn btn-default btn-xs"
-                                                href="/User/chartDev.html?id=2656">
-                                            <i class="fa fa-bar-chart-o"></i>
-                                        </a></td>
-                                    </tr>
-                                </c:forEach>
-                            </c:if>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </div>
-        </div>
         <!--/. row-->
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -242,6 +189,7 @@
                                 <th>接口类型</th>
                                 <th>状态</th>
                                 <th>更新时间</th>
+                                <th>设置</th>
                                 <th>编辑</th>
                                 <th>数据查看</th>
                             </tr>
@@ -256,8 +204,8 @@
                                         <td>${sensor.status}</td>
                                         <td>${sensor.lastData}</td>
                                         <td>${sensor.lastUpdate}</td>
-                                        <td>
-                                            <a class="btn btn-default btn-xs" href="/user/editSensor?id=${sensor.id}">
+                                        <td></td>
+                                        <td><a class="btn btn-default btn-xs" href="/user/editSensor?id=${sensor.id}">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
                                         </td>
@@ -298,6 +246,8 @@
 <script src="/static/jquery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="/static/bootstrap/js/bootstrap-switch.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/static/dist/js/app.min.js"></script>
 <script src="/static/js/user.js"></script>

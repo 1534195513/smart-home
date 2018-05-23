@@ -10,6 +10,8 @@ public interface SensorService {
 
     List<Sensor> sensorList(int id);
 
+    List<Sensor> findHistoryData(int id);
+
     boolean update(Sensor sensor);
 
     void saveSensor(Sensor sensor);

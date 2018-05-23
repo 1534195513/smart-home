@@ -23,6 +23,12 @@ public class SensorServiceImpl implements SensorService {
     }
 
     @Override
+    public List<Sensor> findHistoryData(int id) {
+        List<Sensor> sensors = sensorMapper.findHistoryData(id);
+        return sensors;
+    }
+
+    @Override
     public boolean update(Sensor sensor) {
 
        return sensorMapper.update(sensor);

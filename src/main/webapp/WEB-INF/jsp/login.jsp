@@ -82,32 +82,31 @@
 <script src="/static/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(function () {
-        $('#submitId').click(function () {
-            var user=$("#user").val().trim();
-            var pwd=$("#pwd").val().trim();
-            var veryfiy = true;
-            if(user.length==0||pwd.length ==0){
-                alert("The username or password is error")
-                veryfiy = false;
-            }
-            if (veryfiy){
-                $.ajax({
-                    type:"post",
-                    url:"/login/check",
-                    data:{"username":user,"password":pwd},
-                    success:function (data) {
-                        if(data=="login_success"){
-                            window.location.href="/user/index";
-                        }
-                    },
-                    error:function () {
-                        alert("链接失败")
-                    }
-                })
-            }
+        $("#submitId").click(function () {
+            $.ajax({
+                 type: "post",
+                url: "https://www.bigiot.net/oauth/dev?access_token=527979f955e96b60dc723b9bce2d4b31acc2f648&id=0",
+                // contentType:"application/json",
+                contentType:"application/json",
+                dataType:"jsonp",
+                // data: {
+                //     "client_id": "208",
+                //     "client_secret": "e008c6037e",
+                //     "username": "2402",
+                //     "password": "1c6d5614b1",
+                //     "grant_type": "password"
+                // },
+                success: function (result) {
+                    // $("#div1").html(result);
+                   alert(result.toString());
+                },
+                error: function () {
+                    alert("cw")
 
-        })
-    })
+                }
+            });
+        });
+    });
 </script>
 </body>
 </html>

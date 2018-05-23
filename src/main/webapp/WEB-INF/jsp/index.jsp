@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -111,9 +112,9 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/user/deviceList"><i class="fa fa-list"></i>设备列表</a></li>
+                        <li><a href="/user/dev"><i class="fa fa-list"></i>设备列表</a></li>
                         <li><a href="/user/addDevice"><i class="fa fa-plus"></i>添加设备</a></li>
-                        <li><a href="/reAttend/list"><i class="fa fa-hourglass-start"></i>定时器</a></li>
+                        <li><a href="/user/timer?id=206"><i class="fa fa-hourglass-start"></i>定时器</a></li>
                     </ul>
                 </li>
             </ul>
@@ -157,12 +158,66 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Page Header
-                <small>Optional description</small>
-            </h1>
-        </section>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        智能设备
+                        <small><a
+                                title="具有网络连接功能的设备，如：Arduino W5100、ESP8266、Openwrt路由器、树莓派等，添加设备后可将设备与贝壳物联平台进行对接，进行远程控制和监控数据"
+                                href="#"><i class="fa fa-question"></i></a></small>
+                    </header>
+                    <div class="table-responsive panel-body">
+                        <table class="table" id="dev">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>名称</th>
+                                <th>设备简介</th>
+                                <th>是否公开</th>
+                                <th>是否在线</th>
+                                <th>在线时长</th>
+                                <th>对话</th>
+                                <th>查看</th>
+                            </tr>
+                            </thead>
+                            <tbody id="device">
+                            <tr><a href="/user/toAddDevice">添加设备</a></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        数据接口
+                        <small><a title="接口属于智能设备的一个功能，用于数据上传，在线实时监控" href="#"><i class="fa fa-question"></i></a>
+                        </small>
+                    </header>
+                    <div class="table-responsive panel-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>所属ID</th>
+                                <th>名称</th>
+                                <th>是否公开</th>
+                                <th>是否在线</th>
+                                <th>数据查看</th>
+                                <th>历史数据</th>
+                            </tr>
+                            </thead>
+                            <tbody id="sensor">
+                            <tr><a href="/user/toAddSensor"> 添加传感器</a></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
         <!-- Main content -->
         <section class="content">
             <!-- Your Page Content Here -->
@@ -170,11 +225,11 @@
             <div id="container" style="min-width:400px;height:400px"></div>
             <!-- /relay-->
             <%--<p>--%>
-                <%--<input type="checkbox" name="my-checkbox1" checked>--%>
-                <%--<input type="checkbox" name="my-checkbox1" checked>--%>
-                <%--<input type="checkbox" name="my-checkbox1" checked>--%>
-                <%--<input type="checkbox" name="my-checkbox1" checked>--%>
-                <%--<input type="checkbox" name="my-checkbox1" checked>--%>
+            <%--<input type="checkbox" name="my-checkbox1" checked>--%>
+            <%--<input type="checkbox" name="my-checkbox1" checked>--%>
+            <%--<input type="checkbox" name="my-checkbox1" checked>--%>
+            <%--<input type="checkbox" name="my-checkbox1" checked>--%>
+            <%--<input type="checkbox" name="my-checkbox1" checked>--%>
             <%--</p>--%>
         </section>
         <!-- /.content -->
@@ -202,10 +257,69 @@
 <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
 <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
 <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            type: "get",
+            url: "/user/dev",
+            dataType: 'json',
+            success: function (data) {
+                var str = eval(data)
+                if (str.online==1){
+                    str.online="在线"
+                }
+                else {
+                    str.online="不在线"
+                }
+                str.online_time=parseInt(str.online_time/60/60)+"小时";
+                var s = "<tr><td>" + str.id + "</td><td>" + str.title + "</td><td>" + str.description + "</td><td>" + str.open
+                    + "</td><td>" + str.online + "</td><td>" + str.online_time + "  <td><a title=\"对话\" class=\"btn btn-default btn-xs\"\n" +
+                    "                                               href=\"/user/chatDev?id="+str.id+"\"> <i\n" +
+                    "                                                class=\"fa fa-comments\"></i>\n" +
+                    "                                        </a>\n" +
+                    "                                        </td>\n" +
+                    "                                        <td><a title=\"图表\" class=\"btn btn-default btn-xs\"\n" +
+                    "                                               href=\"/User/chartDev.html?id=${device.id}\">\n" +
+                    "                                            <i class=\"fa fa-bar-chart-o\"></i>\n" +
+                    "                                        </a>\n" +
+                    "                                        </td>" + "</td></tr>";
+                $("#device").append(s);
+            },
+            error: function () {
+                alert("JSON数据获取失败，请联系管理员！");
+            }
+
+        });
+        $.ajax({
+            type: "get",
+            url: "/user/sen",
+            dataType: 'json',
+            success: function (data) {
+                var sen = eval(data)
+                for (var i in sen) {
+                    var s = "<tr><td>" + sen[i].id + "</td><td>" + sen[i].did + "</td><td>" + sen[i].title + "</td><td>" + sen[i].type
+                        + "</td><td>" + sen[i].save +
+                        "                                        <td><a class=\"btn btn-default btn-xs\" href=\"/user/editSensor?id=${sensor.id}\">\n" +
+                        "                                            <i class=\"fa fa-pencil\"></i>\n" +
+                        "                                        </a>\n" +
+                        "                                        </td>\n" +
+                        "                                        <td>\n" +
+                        "                                            <a class=\"btn btn-default btn-xs\" href=\"/user/historyData?id="+sen[i].id+"\">\n" +
+                        "                                                <i class=\"fa fa-bar-chart-o\"></i>\n" +
+                        "                                            </a>\n" + "</td></tr>";
+                    $("#sensor").append(s);
+                }
+            },
+            error: function () {
+                alert("JSON数据获取失败，请联系管理员！");
+            }
+        });
+    });
+</script>
 <%--<script>--%>
-    <%--$(function () {--%>
-        <%--var le = new Array();--%>
-        <%--var temp;--%>
+<%--$(function () {--%>
+<%--var le = new Array();--%>
+<%--var temp;--%>
 <%--//         $.ajax({--%>
 <%--//             url: "send",--%>
 <%--//             type: "post",--%>
@@ -220,92 +334,92 @@
 <%--//                 alert("请求失败")--%>
 <%--//             }--%>
 <%--//         });--%>
-        <%--// {--%>
-        <%--//     "M":"update",--%>
-        <%--//         "ID":"2656",--%>
-        <%--//     "T":"1523813040",--%>
-        <%--//     "V":--%>
-        <%--//     {--%>
-        <%--//         "4588":"24"--%>
-        <%--//     }--%>
-        <%--// }--%>
-        <%--Highcharts.setOptions({--%>
-            <%--global: {--%>
-                <%--useUTC: false--%>
-            <%--}--%>
-        <%--});--%>
-        <%--Highcharts.chart('container', {--%>
-            <%--chart: {--%>
-                <%--type: 'spline',--%>
-                <%--animation: Highcharts.svg, // don't animate in old IE--%>
-                <%--marginRight: 10,--%>
-                <%--events: {--%>
-                    <%--load: function () {--%>
-                        <%--// set up the updating of the chart each second--%>
-                        <%--var series = this.series[0];--%>
-                        <%--setInterval(function () {--%>
-                            <%--var x = (new Date()).getTime(), // current time--%>
-                                <%--y = Math.random();--%>
-                            <%--series.addPoint([x, y], true, true);--%>
-                        <%--}, 1000);--%>
-                    <%--}--%>
-                <%--}--%>
-            <%--},--%>
-            <%--credits: {--%>
-                <%--enabled: false--%>
-            <%--},--%>
-            <%--title: {--%>
-                <%--text: '温度'--%>
-            <%--},--%>
-            <%--subtitle: {--%>
-                <%--text: '副标题'--%>
-            <%--},--%>
-            <%--xAxis: {--%>
-                <%--type: 'datetime',--%>
-                <%--tickPixelInterval: 150--%>
-            <%--},--%>
-            <%--yAxis: {--%>
-                <%--title: {--%>
-                    <%--text: '°C'--%>
-                <%--},--%>
-                <%--plotLines: [{--%>
-                    <%--value: 0,--%>
-                    <%--width: 1,--%>
-                    <%--color: '#808080'--%>
-                <%--}]--%>
-            <%--},--%>
-            <%--tooltip: {--%>
-                <%--formatter: function () {--%>
-                    <%--return '<b>' + this.series.name + '</b><br/>' +--%>
-                        <%--Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +--%>
-                        <%--Highcharts.numberFormat(this.y, 2);--%>
-                <%--}--%>
-            <%--},--%>
-            <%--legend: {--%>
-                <%--enabled: false--%>
-            <%--},--%>
-            <%--exporting: {--%>
-                <%--enabled: false--%>
-            <%--},--%>
-            <%--series: [{--%>
-                <%--name: 'temperature',--%>
-                <%--data: (function () {--%>
-                    <%--// generate an array of random data--%>
-                    <%--var data = [],--%>
-                        <%--time = (new Date()).getTime(),--%>
-                        <%--i;--%>
+<%--// {--%>
+<%--//     "M":"update",--%>
+<%--//         "ID":"2656",--%>
+<%--//     "T":"1523813040",--%>
+<%--//     "V":--%>
+<%--//     {--%>
+<%--//         "4588":"24"--%>
+<%--//     }--%>
+<%--// }--%>
+<%--Highcharts.setOptions({--%>
+<%--global: {--%>
+<%--useUTC: false--%>
+<%--}--%>
+<%--});--%>
+<%--Highcharts.chart('container', {--%>
+<%--chart: {--%>
+<%--type: 'spline',--%>
+<%--animation: Highcharts.svg, // don't animate in old IE--%>
+<%--marginRight: 10,--%>
+<%--events: {--%>
+<%--load: function () {--%>
+<%--// set up the updating of the chart each second--%>
+<%--var series = this.series[0];--%>
+<%--setInterval(function () {--%>
+<%--var x = (new Date()).getTime(), // current time--%>
+<%--y = Math.random();--%>
+<%--series.addPoint([x, y], true, true);--%>
+<%--}, 1000);--%>
+<%--}--%>
+<%--}--%>
+<%--},--%>
+<%--credits: {--%>
+<%--enabled: false--%>
+<%--},--%>
+<%--title: {--%>
+<%--text: '温度'--%>
+<%--},--%>
+<%--subtitle: {--%>
+<%--text: '副标题'--%>
+<%--},--%>
+<%--xAxis: {--%>
+<%--type: 'datetime',--%>
+<%--tickPixelInterval: 150--%>
+<%--},--%>
+<%--yAxis: {--%>
+<%--title: {--%>
+<%--text: '°C'--%>
+<%--},--%>
+<%--plotLines: [{--%>
+<%--value: 0,--%>
+<%--width: 1,--%>
+<%--color: '#808080'--%>
+<%--}]--%>
+<%--},--%>
+<%--tooltip: {--%>
+<%--formatter: function () {--%>
+<%--return '<b>' + this.series.name + '</b><br/>' +--%>
+<%--Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +--%>
+<%--Highcharts.numberFormat(this.y, 2);--%>
+<%--}--%>
+<%--},--%>
+<%--legend: {--%>
+<%--enabled: false--%>
+<%--},--%>
+<%--exporting: {--%>
+<%--enabled: false--%>
+<%--},--%>
+<%--series: [{--%>
+<%--name: 'temperature',--%>
+<%--data: (function () {--%>
+<%--// generate an array of random data--%>
+<%--var data = [],--%>
+<%--time = (new Date()).getTime(),--%>
+<%--i;--%>
 
-                    <%--for (i = -19; i <= 0; i += 1) {--%>
-                        <%--data.push({--%>
-                            <%--x: time + i * 1000,--%>
-                            <%--y: 0--%>
-                        <%--});--%>
-                    <%--}--%>
-                    <%--return data;--%>
-                <%--}())--%>
-            <%--}]--%>
-        <%--});--%>
-    <%--});--%>
+<%--for (i = -19; i <= 0; i += 1) {--%>
+<%--data.push({--%>
+<%--x: time + i * 1000,--%>
+<%--y: 0--%>
+<%--});--%>
+<%--}--%>
+<%--return data;--%>
+<%--}())--%>
+<%--}]--%>
+<%--});--%>
+<%--});--%>
 <%--</script>--%>
 </body>
 </html>
