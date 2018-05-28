@@ -160,7 +160,7 @@
         <!-- Content Header (Page header) -->
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
-                    <form name="add_timer_form" class="formclass" id="add_timer_form" action="/User/addTimer" method="post" novalidate="novalidate">
+                    <%--<form name="add_timer_form" class="formclass" id="add_timer_form"method="post" novalidate="novalidate">--%>
                         <div class="form-group">
                             <label for="title">定时器名称：</label> <input name="title" class="form-control" id="title" required="" type="text" size="35" maxlength="50">
                         </div>
@@ -174,25 +174,25 @@
                         <div class="form-group">
                             <label>星期选择：</label>
                             <div class="form-inline">
-                                <label> <input name="week[]" class="checkbox" type="checkbox" checked="checked" value="1">
+                                <label> <input name="week[]" class="checkbox" type="checkbox"  value="1">
                                     星期一
                                 </label>
-                                <label> <input name="week[]" class="checkbox" type="checkbox" checked="checked" value="2">
+                                <label> <input name="week[]" class="checkbox" type="checkbox" value="2">
                                     星期二
                                 </label>
-                                <label> <input name="week[]" class="checkbox" type="checkbox" checked="checked" value="3">
+                                <label> <input name="week[]" class="checkbox" type="checkbox" value="3">
                                     星期三
                                 </label>
-                                <label> <input name="week[]" class="checkbox" type="checkbox" checked="checked" value="4">
+                                <label> <input name="week[]" class="checkbox" type="checkbox" value="4">
                                     星期四
                                 </label>
-                                <label> <input name="week[]" class="checkbox" type="checkbox" checked="checked" value="5">
+                                <label> <input name="week[]" class="checkbox" type="checkbox" value="5">
                                     星期五
                                 </label>
-                                <label> <input name="week[]" class="checkbox" type="checkbox" checked="checked" value="6">
+                                <label> <input name="week[]" class="checkbox" type="checkbox" value="6">
                                     星期六
                                 </label>
-                                <label> <input name="week[]" class="checkbox" type="checkbox" checked="checked" value="0">
+                                <label> <input name="week[]" class="checkbox" type="checkbox" value="0">
                                     星期日
                                 </label>
                             </div>
@@ -200,7 +200,7 @@
                         <div class="form-group">
                             <label>小时选择：</label>
                             <div class="form-inline">
-                                <label> <input name="hour[]" type="checkbox" checked="checked" value="0">
+                                <label> <input name="hour[]" type="checkbox" value="0">
                                     0
                                 </label>
                                 <label> <input name="hour[]" type="checkbox" value="1">
@@ -277,7 +277,7 @@
                         <div class="form-group">
                             <label>分钟选择：</label>
                             <div class="form-inline">
-                                <label> <input name="min[]" type="checkbox" checked="checked" value="0">
+                                <label> <input name="min[]" type="checkbox" value="0">
                                     0
                                 </label>
                                 <label> <input name="min[]" type="checkbox" value="5">
@@ -320,15 +320,15 @@
                         </div>
                         <div class="form-group">
                             <div class="form-inline">
-                                <label> <input name="enable" class="checkbox" id="enable" type="checkbox" checked="checked" value="1"> 是否启用
+                                <label> <input name="enable" class="checkbox" id="enable" type="checkbox"  value="1"> 是否启用
                                 </label>
-                                <label> <input name="repeats" class="checkbox" id="repeats" type="checkbox" checked="checked" value="1"> 是否重复（不重复时，该定时器被触发一次时即停用）
+                                <label> <input name="repeats" class="checkbox" id="repeats" type="checkbox"  value="1"> 是否重复（不重复时，该定时器被触发一次时即停用）
                                 </label>
                             </div>
                         </div>
-                        <input class="btn btn-primary" type="submit" value="确 定">
+                        <input class="btn btn-primary" type="submit" value="确 定" onclick="timer()">
                         <input class="btn btn-warning" type="reset" value="重 置">
-                    </form>
+                    <%--</form>--%>
 
                 </div>
             </div>
@@ -362,15 +362,77 @@
 <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
 <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
 <script>
-    var ck = $("input[type='checkbox']:checked")    //获取选中的复选框数组
-    var ckVal = "";
-    for(var i = 0; i<ck.length; i++){
-        //alert($(ck[i]).val())//循环得到当前选择的值
-        ckVal += $(ck[i]).val() + ",";
+    function timer() {
+       var t = JSON.stringify(${timer})
+        alert(t)
+        var s = eval(${timer});
+        alert(s.week)
+        var boxes = document.getElementsByTagName("input");
+        var week = []
+        var hour = []
+        var min = []
+        var repeats =[];
+        var enable = [];
+       var s = $("input[type='checkbox']").attr('value');//返回结果：1
+        var inputs=document.getElementsByTagName("input");  //获取所有的input标签对象
+        var checkboxArray=[];   //初始化空数组，用来存放checkbox对象
+        for(var i=0;i<inputs.length;i++){
+            var obj=inputs[i];
+            if(obj.type=='checkbox'){
+                checkboxArray.push(obj);
+                obj.checked=true;
+
+            }
+        }
+
+        // for(var i=0;i<boxes.length;i++){
+        //     if( boxes[i].checked == true) {
+        //         if (boxes[i].name == "week[]") {
+        //             week.push(boxes[i].value);
+        //         }
+        //         if (boxes[i].name == "hour[]") {
+        //             hour.push(boxes[i].value);
+        //         }
+        //         if (boxes[i].name == "min[]") {
+        //             min.push(boxes[i].value);
+        //         }
+        //         if (boxes[i].name == "repeats") {
+        //             repeats.push(boxes[i].value);
+        //         }
+        //         if (boxes[i].name == "enable") {
+        //             enable.push(boxes[i].value);
+        //         }
+        //
+        //         // repeats.push($("#repeats").innerHTML);
+        //         // enable.push($("#enable"))
+        //
+        //     }
+        // }
+        // alert(week.toString());
+        // alert(hour);
+        // alert(min)
+        // alert(repeats)
+        // alert(enable)
+        // $.ajax({
+        //     type:"POST",
+        //     url:"/user/timer1",
+        //     data:{
+        //         "week":week.toString(),
+        //         "hour":hour.toString(),
+        //         "min":min.toString(),
+        //         "repeats":repeats.toString(),
+        //         "enable":enable.toString()
+        //     },
+        //     dataType:"text",
+        //     success:function (data) {
+        //         alert(data)
+        //     },
+        //     error:function(result){
+        //         alert("error")
+        //         // $("#select-box").html("查询失败");
+        //     }
+        // });
     }
-    alert(ckVal)
-
-
     // {
     //     access_token:"授权凭证,凭证内部已包含用户ID信息",
     //         id:"要修改的定时器ID",

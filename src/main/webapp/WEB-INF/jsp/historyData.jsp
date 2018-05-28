@@ -25,34 +25,7 @@
     <%--// JS 代码  for(var i = 0;i<${data.length()};i++){--%>
     <%--document.getElementById("id1").innerHTML= ${data}--%>
     <%--}--%>
-    $.getJSON('/user/historyData', function(data) {
-        alert(JSON.stringify(data))
-        Highcharts.stockChart('container', {
-            chart: {
-                zoomType: 'xy'
-            },
-            title: {
-                text: 'Y 轴滚动条'
-            },
-            subtitle: {
-                text: '请缩放图表后查看滚动条'
-            },
-            yAxis: {
-                scrollbar: {
-                    enabled: true,
-                    showFull: false
-                }
-            },
-            tooltip: {
-                split: false
-            },
-            series: [{
-                data: data.data,
-                pointStart: data.pointStart,
-                pointInterval: data.pointInterval
-            }]
-        });
-    });
+
 </script>
 </body>
 </html>
