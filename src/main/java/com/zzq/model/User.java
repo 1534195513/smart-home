@@ -1,6 +1,6 @@
 package com.zzq.model;
 
-import java.util.List;
+
 
 public class User {
 
@@ -23,16 +23,6 @@ public class User {
     private String apikey;
 
     private String about;
-
-    private List<Device> devices;
-
-    public List<Device> getDevices() {
-        return devices;
-    }
-
-    public void setDevices(List<Device> devices) {
-        this.devices = devices;
-    }
 
     public Integer getId() {
         return id;

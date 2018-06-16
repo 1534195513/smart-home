@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzq.mapper.DatapointMapper" >
+  <resultMap id="BaseResultMap" type="com.zzq.model.Datapoint" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sensor_id" property="sensorId" jdbcType="INTEGER" />
+    <result column="timestamp" property="timestamp" jdbcType="INTEGER" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sensor_id, timestamp, value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from datapoint
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectBySensorId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from datapoint
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from datapoint
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zzq.model.Datapoint" >
+    insert into datapoint (id, sensor_id, timestamp, 
+      value)
+    values (#{id,jdbcType=INTEGER}, #{sensorId,jdbcType=INTEGER}, #{timestamp,jdbcType=INTEGER}, 
+      #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zzq.model.Datapoint" >
+    insert into datapoint
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sensorId != null" >
+        sensor_id,
+      </if>
+      <if test="timestamp != null" >
+        timestamp,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sensorId != null" >
+        #{sensorId,jdbcType=INTEGER},
+      </if>
+      <if test="timestamp != null" >
+        #{timestamp,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zzq.model.Datapoint" >
+    update datapoint
+    <set >
+      <if test="sensorId != null" >
+        sensor_id = #{sensorId,jdbcType=INTEGER},
+      </if>
+      <if test="timestamp != null" >
+        timestamp = #{timestamp,jdbcType=INTEGER},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zzq.model.Datapoint" >
+    update datapoint
+    set sensor_id = #{sensorId,jdbcType=INTEGER},
+      timestamp = #{timestamp,jdbcType=INTEGER},
+      value = #{value,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -45,8 +45,9 @@ public class HttpUtil {
             if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                 /**读取服务器返回过来的json字符串数据**/
                 String strResult = EntityUtils.toString(response.getEntity());
+                String result = strResult.substring(1,strResult.length());
 
-                return strResult;
+                return result;
             }
         }
         catch (IOException e) {
@@ -95,8 +96,9 @@ public class HttpUtil {
                 }
 
                 in.close();
+                String result = sb.substring(1,sb.length());
 
-                return sb.toString();
+                return result;
             }
             else{   //
                 System.out.println("状态码：" + code);

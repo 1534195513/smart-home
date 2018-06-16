@@ -8,38 +8,61 @@ function say() {
             "id": "D2656"
         },
         success: function (data) {
-            alert("已发送")
+           alert(JSON.stringify(data))
         },
-        success: function (data) {
-            alert("cuw")
-            alert(data)
-        }
     })
 
 }
+
 function airCondition(){
     var code=$("#code option:selected");  //获取选中的项
     $.ajax({
         type: "post",
-        url: "/user/airCondition",
+        url: "/user/say",
         dataType: "json",
         data: {
             "id": "D2656",
-            "code":code.text()
+            "c":code.val()
 
         },
         success: function (data) {
-            alert("已发送")
-        },
-        success: function (data) {
-            alert("cuw")
             alert(data)
-        }
+        },
     })
 
 }
+function switchButton(){
+    var code=$("#switch option:selected");  //获取选中的项
+    $.ajax({
+        type: "post",
+        url: "/user/say",
+        dataType: "json",
+        data: {
+            "id": "D2656",
+            "c":code.val()
 
+        },
+        success: function (data) {
+            alert(JSON.stringify(data))
+        },
+    })
+}
+var temperature = "";
+var time = "";
 $(function () {
+    $.ajax({
+        type: "get",
+        url: "/user/recentData?id=4588",
+        async:false,
+        dataType: 'json',
+        success: function (data) {
+            var str = eval(data)
+            temperature=str.value;
+            time=str.time;
+            // temperature = data;
+
+        },
+    });
     $.ajax({
         type: "get",
         url: "/user/dev",
@@ -65,11 +88,10 @@ $(function () {
                 "</td>" + "</td></tr>";
             $("#device").append(s);
         },
-        error: function () {
-            alert("JSON数据获取失败，请联系管理员！");
+        error: function (data) {
+            alert(data);
         }
-
-    });
+    });//dev
     $.ajax({
         type: "get",
         url: "/user/sen",
@@ -77,9 +99,14 @@ $(function () {
         success: function (data) {
             var sen = eval(data)
             var update = "";
+            var num=1;
             for (var i in sen) {
+                if(sen[i].unit=="K"){
+                    update = temperature+"度(最后一次更新)"+time;
+                }
                 if(sen[i].unit=="开/关"){
-                    update="   <input name=\"status\" type=\"checkbox\" data-size=\"small\">"
+                    update="<input id="+num+"' name='status' value="+num+" type='checkbox' data-size='small'>";
+                    num+=1;
                 }
                 if(sen[i].unit=="°C"){
                     update="<select id='code' onchange='airCondition()'>\n" +
@@ -101,21 +128,21 @@ $(function () {
                         "<option value='30'>30度</option>\n" +
                         "</select>"
                 }
-                var s = "<tr><td>" + sen[i].id + "</td><td>" + sen[i].did + "</td><td>" + sen[i].title + "</td><td>" + sen[i].unit
-                    + "</td><td>" + update +
-                    "                                        <td><a class=\"btn btn-default btn-xs\" href=\"/user/saveData?id=" + sen[i].id + "\">\n" +
-                    "                                            <i class=\"fa fa-download\"></i>\n" +
-                    "                                        </a>\n" +
-                    "                                        </td>\n" +
-                    "                                        <td>\n" +
-                    "                                            <a class=\"btn btn-default btn-xs\" href=\"/user/historyData?id=" + sen[i].id + "\">\n" +
-                    "                                                <i class=\"fa fa-bar-chart-o\"></i>\n" +
-                    "                                            </a>\n" + "</td></tr>";
+                var s = "<tr><td>" + sen[i].id + "</td><td>" + sen[i].did + "</td><td>" + sen[i].title + "</td><td>" + sen[i].unit +
+                    "</td><td>" + update +
+                    "<td><a class=\"btn btn-default btn-xs\" href=\"/user/saveData?id=" + sen[i].id + "\">\n" +
+                    "<i class=\"fa fa-download\"></i>\n" +
+                    "</a>\n" +
+                    "</td>\n" +
+                    "<td>\n" +
+                    "<a class=\"btn btn-default btn-xs\" href=\"/user/historyData?id=" + sen[i].id + "\">\n" +
+                    "<i class=\"fa fa-bar-chart-o\"></i>\n" +
+                    "</a>\n" + "</td></tr>";
                 $("#sensor").append(s);
             }
         },
-        error: function () {
-            alert("JSON数据获取失败，请联系管理员！");
+        error: function (data) {
+            alert(JSON.stringify(data));
         }
     });
     $.ajax({
@@ -151,9 +178,8 @@ $(function () {
             }
 
         },
-        error: function () {
-            alert("JSON数据获取失败，请联系管理员！");
+        error: function (data) {
+            alert(data);
         }
     });
-
 });

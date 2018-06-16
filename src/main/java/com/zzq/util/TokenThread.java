@@ -9,13 +9,14 @@ public class TokenThread implements Runnable {
         while (true){
             try{
                 accessToken = AccessTokenUtil.getAccessToken();
-                if(null!=accessToken)
+                if(accessToken!=null)
                 {
-                    System.out.println(new Date()+"获取成功"+accessToken.getExpires_in());
+                    System.out.println(new Date()+"获取成功"+accessToken.getAccess_token());
                     //3500秒之后重新获取
                     Thread.sleep((accessToken.getExpires_in()-100)*1000);
                 }else {
-                    Thread.sleep(60*1000);
+                    System.out.println("获取失败");
+                    Thread.sleep(60);
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
