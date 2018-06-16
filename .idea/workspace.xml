@@ -19,8 +19,6 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/zzq/mapper/DatapointMapper.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/zzq/model/Datapoint.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/zzq/util/ExcelUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/smart_home_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/smart_home_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
@@ -50,7 +48,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/allUser.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/dev.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/historyData.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/index.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/test.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/timer.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/menu.html" beforeDir="false" />
@@ -114,11 +112,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zzq/service/Impl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
+            <state relative-caret-position="323">
               <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -182,7 +189,7 @@
       <find>报警</find>
       <find>传感器</find>
       <find>esp8266</find>
-      <find>fa fa-fw fa-transgender-alt</find>
+      <find />
       <find>3号</find>
       <find>user</find>
       <find>tb_user</find>
@@ -264,12 +271,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zzq/service/SensorService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zzq/service/Impl/DataPointServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/test.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/index.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/zzq/util/MD5Utils.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-mvc.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/addDevice.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/zzq/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zzq/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/index.js" />
       </list>
     </option>
   </component>
@@ -434,6 +441,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="smart-home" type="b2602c69:ProjectViewProjectNode" />
+              <item name="smart-home" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="smart-home" type="b2602c69:ProjectViewProjectNode" />
@@ -1031,7 +1047,7 @@
       <workItem from="1528990687555" duration="3280000" />
       <workItem from="1529025387224" duration="6691000" />
       <workItem from="1529114821384" duration="1614000" />
-      <workItem from="1529154854389" duration="1254000" />
+      <workItem from="1529154854389" duration="1552000" />
     </task>
     <task id="LOCAL-00001" summary="Default">
       <created>1524144474773</created>
@@ -1131,7 +1147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527514500890</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="final">
+      <created>1529156400585</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1529156400585</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1167,7 +1190,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="791869000" />
+    <option name="totallyTimeSpent" value="792167000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1193,7 +1216,7 @@
       <window_info id="Structure" order="1" sideWeight="0.50427353" side_tool="true" weight="0.23391421" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.34950072" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.34950072" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32952926" />
       <window_info anchor="bottom" id="Messages" order="9" weight="0.35235378" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
@@ -1204,7 +1227,7 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.34236804" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.32952926" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32952926" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4957265" visible="true" weight="0.26675603" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4957265" visible="true" weight="0.26675603" />
       <window_info id="Web" order="6" sideWeight="0.5023148" side_tool="true" weight="0.29021448" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3281027" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -1303,7 +1326,8 @@
     <MESSAGE value="insert" />
     <MESSAGE value="second" />
     <MESSAGE value="aircode" />
-    <option name="LAST_COMMIT_MESSAGE" value="aircode" />
+    <MESSAGE value="final" />
+    <option name="LAST_COMMIT_MESSAGE" value="final" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1456,13 +1480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2774">
           <caret line="146" column="53" selection-start-line="146" selection-start-column="53" selection-end-line="146" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2128">
-          <caret line="112" column="28" selection-start-line="112" selection-start-column="28" selection-end-line="112" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1642,8 +1659,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zzq/service/Impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
+        <state relative-caret-position="323">
           <caret line="25" column="41" lean-forward="true" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="60" column="26" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="26" />
         </state>
       </provider>
     </entry>
